@@ -80,7 +80,7 @@ void InsertElem(struct SqList *L, int i, char e) {
     }
     /*如果存储空间不够用，则分配新的空间*/
     if (L->length >= L->size) {
-        char *new¬Base = (char *) realloc(L->elem, (L->size + LIST_INCREMENT) * sizeof(char));
+        char *newBase = (char *) realloc(L->elem, (L->size + LIST_INCREMENT) * sizeof(char));
         if (!newBase) {
             printf("分配新的存储空间时错误\n");
         }
