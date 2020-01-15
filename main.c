@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define LIST_INIT_SIZE 100      /*线性表初始化的大小*/
 #define LIST_INCREMENT 10       /*线性表增量，每次加LIST_INCREMENT个元素的空间*/
@@ -46,6 +47,28 @@ void ClearList(struct SqList *L) {
 }
 
 /**
+ * @brief:判断顺序表是否空
+ * @param：SqList L
+ * @return:true/false
+ * */
+bool IsListEmpty(struct SqList L) {
+    if (L.length == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * @brief:得到顺序表长度
+ * @param:SqList L
+ * @return:L.length
+ * */
+int GetListLength(struct SqList L) {
+    return (L.length);
+}
+
+/**
  * @brief:在线性表第i位（1<=i<=length+1）前插入元素e
  * @param:SqList *L,int i,char e
  * @return:None
@@ -57,7 +80,7 @@ void InsertElem(struct SqList *L, int i, char e) {
     }
     /*如果存储空间不够用，则分配新的空间*/
     if (L->length >= L->size) {
-        char *newBase = (char *) realloc(L->elem, (L->size + LIST_INCREMENT) * sizeof(char));
+        char *new¬Base = (char *) realloc(L->elem, (L->size + LIST_INCREMENT) * sizeof(char));
         if (!newBase) {
             printf("分配新的存储空间时错误\n");
         }
@@ -131,6 +154,7 @@ void GetElem(struct SqList L, int i, char *e) {
     }
     *e = (L.elem[i - 1]);
 }
+
 
 int main() {
     struct SqList L;
